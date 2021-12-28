@@ -1,0 +1,7 @@
+{
+  "itemGroup.algotech.algotechGroup": "AlgoTech",
+  "block.algotech.coal_generator": "Coal Generator",
+  "container.algotech.coal_generator": "Coal Generator",
+  "msg.algotech.coal_generator": "Generating: %s FE/t",
+  "container.algotech.coal_generator.energy_stored": "Energy stored: %s FE"
+}

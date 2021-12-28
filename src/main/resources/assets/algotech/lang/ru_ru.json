@@ -1,0 +1,7 @@
+{
+  "itemGroup.algotech.algotechGroup": "AlgoTech",
+  "block.algotech.coal_generator": "Угольный генератор",
+  "container.algotech.coal_generator": "Угольный генератор",
+  "msg.algotech.coal_generator": "Генерация: %s FE/t",
+  "container.algotech.coal_generator.energy_stored": "Энергии хранится: %s FE"
+}

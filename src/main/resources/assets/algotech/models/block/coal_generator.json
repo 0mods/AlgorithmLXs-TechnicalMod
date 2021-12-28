@@ -1,0 +1,13 @@
+{
+	"parent": "algotech:at/coal_generator_on",
+	"textures": {
+		"1": "algotech:block/coal_gen/ventilation",
+		"2": "algotech:block/coal_gen/working_plate",
+		"3": "algotech:block/coal_gen/gen1",
+		"4": "algotech:block/coal_gen/gen2",
+		"5": "algotech:block/coal_gen/gen3",
+		"6": "algotech:block/coal_gen/cable",
+		"7": "algotech:block/coal_gen/cable_off",
+		"particle": "algotech:block/coal_gen/off_model"
+	}
+}

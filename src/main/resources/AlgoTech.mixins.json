@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.algorithmlx.algotech.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "AlgoTech.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "client.ArmorRenderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
