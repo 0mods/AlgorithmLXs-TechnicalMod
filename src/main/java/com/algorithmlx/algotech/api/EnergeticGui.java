@@ -25,7 +25,7 @@ public class EnergeticGui implements IComponent {
         int maxEnergy = array.get(2);
 
         IRenderTypeBuffer.Impl immediate = IRenderTypeBuffer.immediate(Tessellator.getInstance().getBuilder());
-        Minecraft.getInstance().font.drawInBatch(new StringTextComponent((lastEnergy / 1000f) + "/" + (maxEnergy / 1000f) + "FE").getVisualOrderText(), w, h, Color.BLACK.getRGB(), ColorUtils.calcColorWithEnergy(lastEnergy, maxEnergy), matrices.last().normal(), immediate);
+        Minecraft.getInstance().font.drawInBatch(new StringTextComponent((lastEnergy / 1000f) + "/" + (maxEnergy / 1000f) + "FE").getVisualOrderText(), w, h, Color.BLACK.getRGB(), false, matrices.last().pose(), immediate, false, ColorUtils.calcColorWithEnergy(lastEnergy, maxEnergy), 0);
         immediate.endBatch();
     }
 }
