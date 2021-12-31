@@ -1,6 +1,5 @@
 package com.algorithmlx.algotech.container;
 
-import com.algorithmlx.algotech.api.container.SlotIngredient;
 import com.algorithmlx.algotech.setup.Registration;
 import com.algorithmlx.algotech.tool.EnergySettings;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,12 +20,12 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class CoalGeneratorContainer extends Container {
+public class CoalGeneratorContainerMK1 extends Container {
     private TileEntity tileEntity;
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
 
-    public CoalGeneratorContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
+    public CoalGeneratorContainerMK1(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
         super(Registration.COAL_GENERATOR_CONTAINER.get(), windowId);
         tileEntity = world.getBlockEntity(pos);
         this.playerEntity = player;
@@ -34,7 +33,7 @@ public class CoalGeneratorContainer extends Container {
 
         if (tileEntity != null) {
             tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-                addSlot(new SlotIngredient(h, 0, 1, 1, world));
+                addSlot(new SlotItemHandler(h, 0, 8, 62));
             });
         }
         layoutPlayerInventorySlots(8, 84);
@@ -94,7 +93,7 @@ public class CoalGeneratorContainer extends Container {
                 }
                 slot.onQuickCraft(stack, itemstack);
             } else {
-                if (stack.getItem() == Items.COAL || stack.getItem() == Items.CHARCOAL) {
+                if (stack.getItem() == Items.COAL) {
                     if (!this.moveItemStackTo(stack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }

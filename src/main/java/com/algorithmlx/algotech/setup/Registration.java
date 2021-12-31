@@ -1,12 +1,11 @@
 package com.algorithmlx.algotech.setup;
 
-import com.algorithmlx.algotech.AlgoTech;
-import com.algorithmlx.algotech.block.generators.CoalGenerator;
+import com.algorithmlx.algotech.api.util.Constant;
+import com.algorithmlx.algotech.block.generators.CoalGeneratorMK1;
 import com.algorithmlx.algotech.block.StorageBlocks;
-import com.algorithmlx.algotech.container.CoalGeneratorContainer;
-import com.algorithmlx.algotech.container.EnergyFurnaceContainer;
+import com.algorithmlx.algotech.container.CoalGeneratorContainerMK1;
 import com.algorithmlx.algotech.item.IngotBase;
-import com.algorithmlx.algotech.tile.CoalGeneratorTile;
+import com.algorithmlx.algotech.tile.CoalGeneratorMK1Tile;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.container.ContainerType;
@@ -21,11 +20,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class Registration {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, AlgoTech.ModId);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AlgoTech.ModId);
-    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, AlgoTech.ModId);
-    public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, AlgoTech.ModId);
-    public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, AlgoTech.ModId);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constant.ModId);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Constant.ModId);
+    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Constant.ModId);
+    public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Constant.ModId);
+    public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Constant.ModId);
 
     public static void init() {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -35,23 +34,23 @@ public class Registration {
         TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     public static final RegistryObject<StorageBlocks> BRONZE_BLOCK = BLOCKS.register("bronze_block", StorageBlocks::new);
-    public static final RegistryObject<CoalGenerator> COAL_GENERATOR = BLOCKS.register("coal_generator", CoalGenerator::new);
+    public static final RegistryObject<CoalGeneratorMK1> COAL_GENERATOR = BLOCKS.register("coal_generator", CoalGeneratorMK1::new);
 
     public static final RegistryObject<IngotBase> BRONZE_INGOT = ITEMS.register("bronze_ingot", IngotBase::new);
 
-    public static final RegistryObject<TileEntityType<CoalGeneratorTile>> COAL_GENERATOR_TILE = TILES.register("coal_generator",
-            ()-> TileEntityType.Builder.of(CoalGeneratorTile::new, COAL_GENERATOR.get()).build(null));
+    public static final RegistryObject<TileEntityType<CoalGeneratorMK1Tile>> COAL_GENERATOR_TILE = TILES.register("coal_generator",
+            ()-> TileEntityType.Builder.of(CoalGeneratorMK1Tile::new, COAL_GENERATOR.get()).build(null));
 
-    public static final RegistryObject<ContainerType<CoalGeneratorContainer>> COAL_GENERATOR_CONTAINER = CONTAINERS.register("coal_generator",
+    public static final RegistryObject<ContainerType<CoalGeneratorContainerMK1>> COAL_GENERATOR_CONTAINER = CONTAINERS.register("coal_generator",
             ()-> IForgeContainerType.create(((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
                 World level = inv.player.getCommandSenderWorld();
-                return new CoalGeneratorContainer(windowId, level, pos, inv, inv.player);
+                return new CoalGeneratorContainerMK1(windowId, level, pos, inv, inv.player);
             })));
-    public static final RegistryObject<ContainerType<EnergyFurnaceContainer>> ENERGY_FURNACE_CONTAINER = CONTAINERS.register("energy_furnace",
-            ()-> IForgeContainerType.create((((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                World level = inv.player.getCommandSenderWorld();
-                return new EnergyFurnaceContainer(windowId, level, pos, inv, inv.player);
-            }))));
+//    public static final RegistryObject<ContainerType<EnergyFurnaceContainer>> ENERGY_FURNACE_CONTAINER = CONTAINERS.register("energy_furnace",
+//            ()-> IForgeContainerType.create((((windowId, inv, data) -> {
+//                BlockPos pos = data.readBlockPos();
+//                World level = inv.player.getCommandSenderWorld();
+//                return new EnergyFurnaceContainer(windowId, level, pos, inv, inv.player);
+//            }))));
 }

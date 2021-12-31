@@ -1,9 +1,9 @@
 package com.algorithmlx.algotech.block.generators;
 
-import com.algorithmlx.algotech.AlgoTech;
-import com.algorithmlx.algotech.container.CoalGeneratorContainer;
+import com.algorithmlx.algotech.api.util.Constant;
+import com.algorithmlx.algotech.container.CoalGeneratorContainerMK1;
 import com.algorithmlx.algotech.setup.Config;
-import com.algorithmlx.algotech.tile.CoalGeneratorTile;
+import com.algorithmlx.algotech.tile.CoalGeneratorMK1Tile;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -32,8 +32,8 @@ import net.minecraft.state.properties.BlockStateProperties;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class CoalGenerator extends Block {
-    public CoalGenerator() {
+public class CoalGeneratorMK1 extends Block {
+    public CoalGeneratorMK1() {
         super(Properties.of(Material.METAL)
                 .sound(SoundType.METAL)
                 .strength(2.0f)
@@ -44,7 +44,7 @@ public class CoalGenerator extends Block {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flags) {
-        list.add(new TranslationTextComponent("msg."+AlgoTech.ModId+".coal_generator", Config.COAL_GENERATOR_GENERATE.get()));
+        list.add(new TranslationTextComponent("msg."+Constant.ModId+".coal_generator", Config.COAL_GENERATOR_GENERATE.get()));
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CoalGenerator extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new CoalGeneratorTile();
+        return new CoalGeneratorMK1Tile();
     }
 
     @Nullable
@@ -64,22 +64,21 @@ public class CoalGenerator extends Block {
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return defaultBlockState().setValue(BlockStateProperties.FACING, context.getNearestLookingDirection().getOpposite());
     }
-
     @SuppressWarnings("deprecation")
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult trace) {
         if(!world.isClientSide()) {
             TileEntity tileEntity = world.getBlockEntity(pos);
-            if(tileEntity instanceof CoalGeneratorTile) {
+            if(tileEntity instanceof CoalGeneratorMK1Tile) {
                 INamedContainerProvider containerProvider = new INamedContainerProvider() {
                     @Override
                     public ITextComponent getDisplayName() {
-                        return new TranslationTextComponent("container."+AlgoTech.ModId+".coal_generator");
+                        return new TranslationTextComponent("container."+ Constant.ModId+".coal_generator");
                     }
 
                     @Override
                     public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                        return new CoalGeneratorContainer(i, world, pos, playerInventory, playerEntity);
+                        return new CoalGeneratorContainerMK1(i, world, pos, playerInventory, playerEntity);
                     }
                 };
                 NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider, tileEntity.getBlockPos());

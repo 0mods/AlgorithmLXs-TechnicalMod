@@ -1,8 +1,7 @@
 package com.algorithmlx.algotech.api.container;
 
-import com.algorithmlx.algotech.AlgoTech;
+import com.algorithmlx.algotech.api.util.Constant;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.world.World;
@@ -18,7 +17,7 @@ public class SlotIngredient extends SlotCore {
     protected final World world;
 
     public SlotIngredient(IItemHandler itemHandler, int index, int xPosition, int yPosition, World world) {
-        super(itemHandler, index, xPosition, yPosition, "slot." + AlgoTech.ModId + ".ingredient");
+        super(itemHandler, index, xPosition, yPosition, "slot." + Constant.ModId + ".ingredient");
         this.itemHandler = itemHandler;
         this.index = index;
         this.world = world;

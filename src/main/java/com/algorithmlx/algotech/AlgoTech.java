@@ -1,5 +1,6 @@
 package com.algorithmlx.algotech;
 
+import com.algorithmlx.algotech.api.util.Constant;
 import com.algorithmlx.algotech.setup.ClientSetup;
 import com.algorithmlx.algotech.setup.Config;
 import com.algorithmlx.algotech.setup.ModSetup;
@@ -18,10 +19,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(AlgoTech.ModId)
-@Mod.EventBusSubscriber(modid = AlgoTech.ModId, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(Constant.ModId)
+@Mod.EventBusSubscriber(modid = Constant.ModId, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AlgoTech {
-    public static final String ModId = "algotech";
     public static final Logger LOGGER = LogManager.getLogger();
 
     ModLoadingContext modContext = ModLoadingContext.get();

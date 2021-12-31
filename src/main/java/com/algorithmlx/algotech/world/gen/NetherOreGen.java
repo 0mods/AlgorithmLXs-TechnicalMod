@@ -1,6 +1,7 @@
-package com.algorithmlx.algotech.world;
+package com.algorithmlx.algotech.world.gen;
 
 import com.algorithmlx.algotech.AlgoTech;
+import com.algorithmlx.algotech.api.util.Constant;
 import net.minecraft.block.Block;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -25,7 +26,7 @@ import java.util.Objects;
 public class NetherOreGen {
     private static final ArrayList<ConfiguredFeature<?, ?>> netherOres = new ArrayList<>();
     private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
-        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, AlgoTech.ModId + ":" + name, configuredFeature);
+        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Constant.ModId + ":" + name, configuredFeature);
     }
     public static void registerOres() {
 

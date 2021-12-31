@@ -1,6 +1,8 @@
-package com.algorithmlx.algotech.world;
+package com.algorithmlx.algotech.world.gen;
 
 import com.algorithmlx.algotech.AlgoTech;
+import com.algorithmlx.algotech.api.util.Constant;
+import com.algorithmlx.algotech.world.feature.OreFeature;
 import net.minecraft.block.Block;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -22,18 +24,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber
-public class OreGen {
-    private static final ArrayList<ConfiguredFeature<?, ?>> overOres = new ArrayList<>();
+public class EndOreGen {
+    private static final ArrayList<ConfiguredFeature<?, ?>> endOres = new ArrayList<>();
     private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
-        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, AlgoTech.ModId + ":" + name, configuredFeature);
+        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Constant.ModId + ":" + name, configuredFeature);
     }
     public static void registerOres() {
 
     }
-    public static ConfiguredFeature<?, ?> genOres(Block block, int minHeight, int maxHeight, int veinSize, int amountOfVeinInChunk) {
+    public static ConfiguredFeature<?, ?> genEndOre(Block block, int minHeight, int maxHeight, int veinSize, int amountOfVeinInChunk) {
         AlgoTech.LOGGER.info("Registered nether ore: " + Objects.requireNonNull(block.getRegistryName()).getPath());
         return register(Objects.requireNonNull(block.getRegistryName()).getPath(),
-                Feature.ORE.configured(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                Feature.ORE.configured(new OreFeatureConfig(OreFeature.BlockFiller.END_STONE,
                                 block.defaultBlockState(), veinSize))
                         .decorated(Placement.RANGE.configured(new TopSolidRangeConfig(minHeight, 0, maxHeight)))
                         .squared().count(amountOfVeinInChunk));
@@ -41,8 +43,8 @@ public class OreGen {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void generateOres(BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
-        if (event.getCategory().equals(Biome.Category.NONE)) {
-            for (ConfiguredFeature<?, ?> ore : overOres) {
+        if (event.getCategory().equals(Biome.Category.THEEND)) {
+            for (ConfiguredFeature<?, ?> ore : endOres) {
                 if (ore != null) generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
             }
         }

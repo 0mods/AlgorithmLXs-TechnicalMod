@@ -5,7 +5,7 @@ import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 
-public class SlotOutput extends SlotCore{
+public class SlotOutput extends SlotCore {
     public SlotOutput(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
         super(itemHandler, index, xPosition, yPosition, null);
     }

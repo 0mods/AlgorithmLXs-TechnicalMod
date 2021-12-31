@@ -1,4 +1,4 @@
-package com.algorithmlx.algotech.api;
+package com.algorithmlx.algotech.api.util;
 
 import net.minecraft.util.math.MathHelper;
 

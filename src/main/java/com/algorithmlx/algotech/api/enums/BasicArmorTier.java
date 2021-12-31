@@ -1,6 +1,6 @@
 package com.algorithmlx.algotech.api.enums;
 
-import com.algorithmlx.algotech.AlgoTech;
+import com.algorithmlx.algotech.api.util.Constant;
 import com.algorithmlx.algotech.api.interfaces.IArmorRender;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.crafting.Ingredient;
@@ -72,6 +72,6 @@ public enum BasicArmorTier implements IArmorRender {
 
     @Override
     public String getModId() {
-        return AlgoTech.ModId;
+        return Constant.ModId;
     }
 }

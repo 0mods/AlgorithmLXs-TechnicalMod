@@ -24,7 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CoalGeneratorTile extends TileEntity implements ITickableTileEntity {
+public class CoalGeneratorMK1Tile extends TileEntity implements ITickableTileEntity {
     private ItemStackHandler itemHandler = createHandler();
     private EnergySettings energyStorage = createEnergy();
 
@@ -33,7 +33,7 @@ public class CoalGeneratorTile extends TileEntity implements ITickableTileEntity
 
     private int counter;
 
-    public CoalGeneratorTile() {
+    public CoalGeneratorMK1Tile() {
         super(Registration.COAL_GENERATOR_TILE.get());
     }
 
@@ -60,7 +60,7 @@ public class CoalGeneratorTile extends TileEntity implements ITickableTileEntity
 
         if (counter <= 0) {
             ItemStack stack = itemHandler.getStackInSlot(0);
-            if (stack.getItem() == Items.COAL || stack.getItem() == Items.CHARCOAL) {
+            if (stack.getItem() == Items.COAL) {
                 itemHandler.extractItem(0, 1, false);
                 counter = 20;
                 setChanged();
