@@ -1,8 +1,9 @@
 package com.algorithmlx.algotech.tile;
 
+import api.algotech.energy.ATESettings;
+import api.algotech.energy.IAlgoTechEnergyStorage;
 import com.algorithmlx.algotech.setup.Config;
 import com.algorithmlx.algotech.setup.Registration;
-import com.algorithmlx.algotech.tool.EnergySettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -15,7 +16,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -26,10 +26,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CoalGeneratorMK1Tile extends TileEntity implements ITickableTileEntity {
     private ItemStackHandler itemHandler = createHandler();
-    private EnergySettings energyStorage = createEnergy();
+    private ATESettings energyStorage = createEnergy();
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
-    private LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
+    private LazyOptional<IAlgoTechEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
 
     private int counter;
 
@@ -77,7 +77,7 @@ public class CoalGeneratorMK1Tile extends TileEntity implements ITickableTileEnt
     }
 
     private void sendOutPower() {
-        AtomicInteger capacity = new AtomicInteger(energyStorage.getEnergyStored());
+        AtomicInteger capacity = new AtomicInteger(energyStorage.getStored());
         if (capacity.get() > 0) {
             for (Direction direction : Direction.values()) {
                 TileEntity te = level.getBlockEntity(worldPosition.relative(direction));
@@ -105,7 +105,7 @@ public class CoalGeneratorMK1Tile extends TileEntity implements ITickableTileEnt
     @Override
     public void load(BlockState state, CompoundNBT tag) {
         itemHandler.deserializeNBT(tag.getCompound("inv"));
-        energyStorage.deserializeNBT(tag.getCompound("energy"));
+        energyStorage.deserializeNBT(tag.getCompound("ate"));
 
         counter = tag.getInt("counter");
         super.load(state, tag);
@@ -114,7 +114,7 @@ public class CoalGeneratorMK1Tile extends TileEntity implements ITickableTileEnt
     @Override
     public CompoundNBT save(CompoundNBT tag) {
         tag.put("inv", itemHandler.serializeNBT());
-        tag.put("energy", energyStorage.serializeNBT());
+        tag.put("ate", energyStorage.serializeNBT());
 
         tag.putInt("counter", counter);
         return super.save(tag);
@@ -144,8 +144,8 @@ public class CoalGeneratorMK1Tile extends TileEntity implements ITickableTileEnt
         };
     }
 
-    private EnergySettings createEnergy() {
-        return new EnergySettings(Config.COAL_GENERATOR_MAX_POWER.get(), 0) {
+    private ATESettings createEnergy() {
+        return new ATESettings(Config.COAL_GENERATOR_MAX_POWER.get(), 0) {
             @Override
             protected void onEnergyChanged() {
                 setChanged();

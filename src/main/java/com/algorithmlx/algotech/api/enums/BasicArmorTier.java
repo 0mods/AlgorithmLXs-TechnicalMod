@@ -1,6 +1,6 @@
 package com.algorithmlx.algotech.api.enums;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import com.algorithmlx.algotech.api.interfaces.IArmorRender;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.crafting.Ingredient;

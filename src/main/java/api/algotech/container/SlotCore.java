@@ -1,4 +1,4 @@
-package com.algorithmlx.algotech.api.container;
+package api.algotech.container;
 
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;

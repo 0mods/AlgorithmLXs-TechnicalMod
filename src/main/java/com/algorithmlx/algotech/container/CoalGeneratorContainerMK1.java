@@ -1,7 +1,9 @@
 package com.algorithmlx.algotech.container;
 
+import api.algotech.energy.ATESettings;
+import api.algotech.energy.AlgoTechCapabilityEnergy;
+import api.algotech.energy.IAlgoTechEnergyStorage;
 import com.algorithmlx.algotech.setup.Registration;
-import com.algorithmlx.algotech.tool.EnergySettings;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -13,8 +15,6 @@ import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -49,9 +49,9 @@ public class CoalGeneratorContainerMK1 extends Container {
 
             @Override
             public void set(int value) {
-                tileEntity.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyHash -> {
-                    int energyStored = energyHash.getEnergyStored() & 0xffff0000;
-                    ((EnergySettings)energyHash).setEnergy(energyStored + (value & 0xffff));
+                tileEntity.getCapability(AlgoTechCapabilityEnergy.ENERGY).ifPresent(energyHash -> {
+                    int energyStored = energyHash.getStored() & 0xffff0000;
+                    ((ATESettings)energyHash).setEnergy(energyStored + (value & 0xffff));
                 });
             }
         });
@@ -63,16 +63,16 @@ public class CoalGeneratorContainerMK1 extends Container {
 
             @Override
             public void set(int value) {
-                tileEntity.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyHash -> {
-                    int energyStored = energyHash.getEnergyStored() & 0x0000ffff;
-                    ((EnergySettings)energyHash).setEnergy(energyStored | (value << 16));
+                tileEntity.getCapability(AlgoTechCapabilityEnergy.ENERGY).ifPresent(energyHash -> {
+                    int energyStored = energyHash.getStored() & 0x0000ffff;
+                    ((ATESettings)energyHash).setEnergy(energyStored | (value << 16));
                 });
             }
         });
     }
 
     public int getEnergy() {
-        return tileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        return tileEntity.getCapability(AlgoTechCapabilityEnergy.ENERGY).map(IAlgoTechEnergyStorage::getStored).orElse(0);
     }
 
     @Override

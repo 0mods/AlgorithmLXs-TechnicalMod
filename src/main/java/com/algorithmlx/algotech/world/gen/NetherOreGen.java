@@ -1,7 +1,7 @@
 package com.algorithmlx.algotech.world.gen;
 
 import com.algorithmlx.algotech.AlgoTech;
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import net.minecraft.block.Block;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;

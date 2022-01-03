@@ -1,7 +1,7 @@
 package com.algorithmlx.algotech.client;
 
-import com.algorithmlx.algotech.api.util.Constant;
-import com.algorithmlx.algotech.api.util.GuiMaker;
+import api.algotech.util.Constant;
+import api.algotech.util.GuiMaker;
 import com.algorithmlx.algotech.container.CoalGeneratorContainerMK1;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -21,7 +21,6 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainerM
 
     public CoalGeneratorScreen(CoalGeneratorContainerMK1 container, PlayerInventory inv, ITextComponent name/*, String stringName*/) {
         super(container, inv, name);
-        //Constant.name = stringName;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.algorithmlx.algotech.client.book;
 
-import com.algorithmlx.algotech.api.util.Constant;
-import com.algorithmlx.algotech.api.util.GuiMaker;
+import api.algotech.util.Constant;
+import api.algotech.util.GuiMaker;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -15,8 +15,8 @@ public class GuideBookScreen extends Screen {
     private final GuiMaker maker = new GuiMaker("guide_book");
     private final ResourceLocation texture = maker.location;
 
-    private int imageWidth  = 176; //x
-    private int imageHeight = 166; //y
+    private int imageWidth  = 352; //x
+    private int imageHeight = 322; //y
 
     public GuideBookScreen(String name) {
         super(new TranslationTextComponent("screen." + Constant.ModId + "." + name));
@@ -24,12 +24,13 @@ public class GuideBookScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+        Minecraft.getInstance().getTextureManager().bind(texture);
+        blit(matrixStack, imageWidth / 2, imageHeight / 2, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
-        renderBackground(matrixStack);
     }
 
     @Override
     protected void init() {
-        Minecraft.getInstance().getTextureManager().bind(texture);
+
     }
 }

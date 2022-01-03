@@ -1,4 +1,4 @@
-package com.algorithmlx.algotech.api.util;
+package api.algotech.util;
 
 import com.algorithmlx.algotech.api.interfaces.IComponent;
 import com.mojang.blaze3d.matrix.MatrixStack;

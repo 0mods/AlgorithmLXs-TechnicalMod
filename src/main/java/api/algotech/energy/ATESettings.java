@@ -1,11 +1,10 @@
-package com.algorithmlx.algotech.tool;
+package api.algotech.energy;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.energy.EnergyStorage;
 
-public class EnergySettings extends EnergyStorage implements INBTSerializable<CompoundNBT> {
-    public EnergySettings(int capacity, int maxTransfer) {
+public class ATESettings extends AlgoTechEnergyStorage implements INBTSerializable<CompoundNBT> {
+    public ATESettings(int capacity, int maxTransfer) {
         super(capacity, maxTransfer);
     }
 
@@ -20,8 +19,8 @@ public class EnergySettings extends EnergyStorage implements INBTSerializable<Co
 
     public void addEnergy(int energy) {
         this.energy += energy;
-        if (this.energy > getMaxEnergyStored()) {
-            this.energy = getEnergyStored();
+        if (this.energy > getMaxStored()) {
+            this.energy = getStored();
         }
         onEnergyChanged();
     }
@@ -37,12 +36,12 @@ public class EnergySettings extends EnergyStorage implements INBTSerializable<Co
     @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT tag = new CompoundNBT();
-        tag.putInt("energy", getEnergyStored());
+        tag.putInt("ate", getStored());
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundNBT nbt) {
-        setEnergy(nbt.getInt("energy"));
+        setEnergy(nbt.getInt("ate"));
     }
 }

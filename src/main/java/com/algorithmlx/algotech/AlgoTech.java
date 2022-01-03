@@ -1,6 +1,6 @@
 package com.algorithmlx.algotech;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import com.algorithmlx.algotech.setup.ClientSetup;
 import com.algorithmlx.algotech.setup.Config;
 import com.algorithmlx.algotech.setup.ModSetup;

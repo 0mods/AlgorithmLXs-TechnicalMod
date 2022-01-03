@@ -1,6 +1,6 @@
-package com.algorithmlx.algotech.api.container;
+package api.algotech.container;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;

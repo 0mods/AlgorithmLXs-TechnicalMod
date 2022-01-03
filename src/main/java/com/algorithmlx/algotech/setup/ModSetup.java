@@ -1,6 +1,7 @@
 package com.algorithmlx.algotech.setup;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.energy.AlgoTechCapabilityEnergy;
+import api.algotech.util.Constant;
 import com.algorithmlx.algotech.world.gen.EndOreGen;
 import com.algorithmlx.algotech.world.gen.NetherOreGen;
 import com.algorithmlx.algotech.world.gen.OreGen;
@@ -34,6 +35,7 @@ public class ModSetup {
         NetherOreGen.registerOres();
         EndOreGen.registerOres();
         OreGen.registerOres();
+        AlgoTechCapabilityEnergy.init();
     }
     @SubscribeEvent
     public static void serverSetup(final RegisterCommandsEvent event) {

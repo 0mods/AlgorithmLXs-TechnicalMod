@@ -1,6 +1,6 @@
 package com.algorithmlx.algotech.setup;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import com.algorithmlx.algotech.client.CoalGeneratorScreen;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.api.distmarker.Dist;

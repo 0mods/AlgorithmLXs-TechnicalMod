@@ -1,6 +1,6 @@
 package com.algorithmlx.algotech.block.generators;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import com.algorithmlx.algotech.container.CoalGeneratorContainerMK1;
 import com.algorithmlx.algotech.setup.Config;
 import com.algorithmlx.algotech.tile.CoalGeneratorMK1Tile;

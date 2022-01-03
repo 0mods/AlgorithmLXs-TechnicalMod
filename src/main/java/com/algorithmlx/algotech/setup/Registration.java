@@ -1,9 +1,10 @@
 package com.algorithmlx.algotech.setup;
 
-import com.algorithmlx.algotech.api.util.Constant;
+import api.algotech.util.Constant;
 import com.algorithmlx.algotech.block.generators.CoalGeneratorMK1;
 import com.algorithmlx.algotech.block.StorageBlocks;
 import com.algorithmlx.algotech.container.CoalGeneratorContainerMK1;
+import com.algorithmlx.algotech.item.GuideBook;
 import com.algorithmlx.algotech.item.IngotBase;
 import com.algorithmlx.algotech.tile.CoalGeneratorMK1Tile;
 import net.minecraft.block.Block;
@@ -37,6 +38,7 @@ public class Registration {
     public static final RegistryObject<CoalGeneratorMK1> COAL_GENERATOR = BLOCKS.register("coal_generator", CoalGeneratorMK1::new);
 
     public static final RegistryObject<IngotBase> BRONZE_INGOT = ITEMS.register("bronze_ingot", IngotBase::new);
+    public static final RegistryObject<GuideBook> GUIDE_BOOK = ITEMS.register("guide_book", GuideBook::new);
 
     public static final RegistryObject<TileEntityType<CoalGeneratorMK1Tile>> COAL_GENERATOR_TILE = TILES.register("coal_generator",
             ()-> TileEntityType.Builder.of(CoalGeneratorMK1Tile::new, COAL_GENERATOR.get()).build(null));
